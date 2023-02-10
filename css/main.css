@@ -1,0 +1,309 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Space Mono", monospace;
+  background-color: hsl(185deg, 41%, 84%);
+}
+
+.calculator-title {
+  margin-top: 7rem;
+  margin-bottom: 4rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  color: hsl(184deg, 14%, 56%);
+}
+.calculator-title .calculator-title-part {
+  display: block;
+}
+
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrap input[type=number]::-webkit-inner-spin-button,
+.wrap input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.calculator-box {
+  display: flex;
+  width: 80rem;
+  height: 50rem;
+  background-color: hsl(0deg, 0%, 100%);
+  border-radius: 1.4rem;
+}
+.calculator-box .calculator-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 3rem;
+  width: 50%;
+  height: 100%;
+}
+.calculator-box .calculator-data .bill-title,
+.calculator-box .calculator-data .select-tip-title,
+.calculator-box .calculator-data .number-people-title {
+  margin-bottom: 0.8rem;
+  font-size: 1.8rem;
+  color: hsl(184deg, 14%, 56%);
+}
+.calculator-box .calculator-data .bill-sum,
+.calculator-box .calculator-data .number-people {
+  padding: 1.2rem 1rem;
+  width: 84%;
+  font-size: 2rem;
+  font-weight: bold;
+  border-radius: 0.6rem;
+}
+.calculator-box .calculator-data .bill-sum,
+.calculator-box .calculator-data .tip-percent-input,
+.calculator-box .calculator-data .number-people {
+  text-align: end;
+  border: 0.2rem solid hsl(172deg, 67%, 45%);
+  color: hsl(183deg, 100%, 15%);
+  transition: border 0.3s background-color 0.3s;
+  cursor: pointer;
+}
+.calculator-box .calculator-data .bill-sum:focus,
+.calculator-box .calculator-data .tip-percent-input:focus,
+.calculator-box .calculator-data .number-people:focus {
+  outline: none;
+  border: 0.2rem solid hsl(172deg, 85%, 33%);
+  background-color: hsl(189deg, 41%, 97%);
+}
+.calculator-box .calculator-data .bill-input-icon,
+.calculator-box .calculator-data .people-input-icon {
+  position: absolute;
+  left: 1.8rem;
+  top: 5rem;
+}
+.calculator-box .calculator-data .bill-box {
+  position: relative;
+}
+.calculator-box .calculator-data .select-tip-box .percent-btns .tip-percent,
+.calculator-box .calculator-data .select-tip-box .percent-btns .tip-percent-input {
+  margin: 1rem 1rem 1rem 0;
+  padding: 1rem 2.6rem;
+  width: 9.4rem;
+  font-size: 1.8rem;
+  border-radius: 0.4rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.calculator-box .calculator-data .select-tip-box .percent-btns .tip-percent {
+  background-color: hsl(183deg, 100%, 15%);
+  color: hsl(0deg, 0%, 100%);
+  border: none;
+  transition: color 0.3s, background-color 0.3s;
+}
+.calculator-box .calculator-data .select-tip-box .percent-btns .tip-percent:hover {
+  background-color: hsl(172deg, 58%, 75%);
+  color: hsl(183deg, 100%, 15%);
+}
+.calculator-box .calculator-data .select-tip-box .percent-btns .tip-percent:focus {
+  background-color: hsl(172deg, 58%, 75%);
+  color: hsl(183deg, 100%, 15%);
+}
+.calculator-box .calculator-data .number-people-box {
+  position: relative;
+  margin-bottom: 2.6rem;
+}
+.calculator-box .calculator-data .number-people-box .number-people-box-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.calculator-box .calculator-data .number-people-box .number-people-box-info .error-text {
+  margin-top: 1.2rem;
+  margin-right: 4rem;
+  font-size: 1.4rem;
+  color: hsl(0deg, 81%, 50%);
+  font-weight: bold;
+}
+.calculator-box .calculator-result {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 2.5rem;
+  margin-right: 2.5rem;
+  height: 90%;
+  width: 46%;
+  background-color: hsl(183deg, 100%, 15%);
+  border-radius: 1.4rem;
+}
+.calculator-box .calculator-result .tip-amount-box {
+  margin: 1.2rem;
+}
+.calculator-box .calculator-result .tip-amount-box,
+.calculator-box .calculator-result .total-box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 4.6rem;
+}
+.calculator-box .calculator-result .tip-amount-box .tip-amount-title,
+.calculator-box .calculator-result .tip-amount-box .total-title,
+.calculator-box .calculator-result .total-box .tip-amount-title,
+.calculator-box .calculator-result .total-box .total-title {
+  color: hsl(185deg, 41%, 84%);
+}
+.calculator-box .calculator-result .tip-amount-box .tip-amount-person,
+.calculator-box .calculator-result .tip-amount-box .total-person,
+.calculator-box .calculator-result .total-box .tip-amount-person,
+.calculator-box .calculator-result .total-box .total-person {
+  font-size: 1.2rem;
+  color: hsl(184deg, 14%, 56%);
+}
+.calculator-box .calculator-result .tip-amount-box .total-result,
+.calculator-box .calculator-result .tip-amount-box .tip-amount-result,
+.calculator-box .calculator-result .total-box .total-result,
+.calculator-box .calculator-result .total-box .tip-amount-result {
+  font-size: 4rem;
+  color: hsl(172deg, 67%, 45%);
+  font-weight: bold;
+}
+.calculator-box .calculator-result .reset-btn {
+  position: absolute;
+  top: 84%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem 2rem;
+  width: 80%;
+  border-radius: 0.4rem;
+  color: hsl(183deg, 100%, 15%);
+  background-color: hsl(172deg, 67%, 45%);
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+.calculator-box .calculator-result .reset-btn:hover {
+  background-color: hsl(172deg, 58%, 75%);
+}
+
+@media (max-width: 368px) {
+  .calculator-box {
+    flex-direction: column;
+    height: 84rem;
+    width: 24rem;
+  }
+  .calculator-box .calculator-data,
+  .calculator-box .calculator-result {
+    width: 100%;
+  }
+  .calculator-box .calculator-data {
+    margin-left: 1.8rem;
+  }
+  .calculator-box .calculator-data .bill-title,
+  .calculator-box .calculator-data .select-tip-title,
+  .calculator-box .calculator-data .number-people-title,
+  .calculator-box .calculator-data .bill-input-icon {
+    margin-top: 1.6rem;
+  }
+  .calculator-box .calculator-data .people-input-icon {
+    margin-top: 1.8rem;
+  }
+  .calculator-box .calculator-data .select-tip-box .percent-btns .tip-percent,
+  .calculator-box .calculator-data .select-tip-box .percent-btns .tip-percent-input {
+    width: 9rem;
+  }
+  .calculator-box .calculator-data .select-tip-box .percent-btns .tip-percent-input::-moz-placeholder {
+    font-size: 1rem;
+  }
+  .calculator-box .calculator-data .select-tip-box .percent-btns .tip-percent-input::placeholder {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 368px) {
+  .calculator-box {
+    flex-direction: column;
+    height: 80rem;
+    width: 34rem;
+  }
+  .calculator-box .calculator-data,
+  .calculator-box .calculator-result {
+    width: 100%;
+  }
+  .calculator-box .calculator-data .bill-title,
+  .calculator-box .calculator-data .select-tip-title,
+  .calculator-box .calculator-data .number-people-title,
+  .calculator-box .calculator-data .bill-input-icon,
+  .calculator-box .calculator-data .people-input-icon {
+    margin-top: 1.6rem;
+  }
+  .calculator-box .calculator-data .select-tip-box .percent-btns .tip-percent,
+  .calculator-box .calculator-data .select-tip-box .percent-btns .tip-percent-input {
+    width: 13.4rem;
+  }
+}
+@media (min-width: 578px) {
+  .calculator-box {
+    flex-direction: row;
+    height: 58rem;
+    width: 56rem;
+  }
+  .calculator-box .calculator-data,
+  .calculator-box .calculator-result {
+    width: 100%;
+  }
+  .calculator-box .calculator-data .bill-title,
+  .calculator-box .calculator-data .select-tip-title,
+  .calculator-box .calculator-data .number-people-title,
+  .calculator-box .calculator-data .bill-input-icon {
+    margin-top: 1.6rem;
+  }
+  .calculator-box .calculator-data .people-input-icon {
+    margin-top: 1.8rem;
+  }
+  .calculator-box .calculator-data .select-tip-box .percent-btns .tip-percent,
+  .calculator-box .calculator-data .select-tip-box .percent-btns .tip-percent-input {
+    width: 10rem;
+  }
+  .calculator-box .calculator-data .select-tip-box .percent-btns .tip-percent-input::-moz-placeholder {
+    font-size: 1.2rem;
+  }
+  .calculator-box .calculator-data .select-tip-box .percent-btns .tip-percent-input::placeholder {
+    font-size: 1.2rem;
+  }
+}
+@media (min-width: 768px) {
+  .calculator-box {
+    flex-direction: row;
+    height: 50rem;
+    width: 80rem;
+  }
+  .calculator-box .calculator-data,
+  .calculator-box .calculator-result {
+    width: 100%;
+  }
+  .calculator-box .calculator-data .bill-title,
+  .calculator-box .calculator-data .select-tip-title,
+  .calculator-box .calculator-data .number-people-title,
+  .calculator-box .calculator-data .bill-input-icon,
+  .calculator-box .calculator-data .people-input-icon {
+    margin-top: 1.6rem;
+  }
+  .calculator-box .calculator-data .select-tip-box .percent-btns .tip-percent,
+  .calculator-box .calculator-data .select-tip-box .percent-btns .tip-percent-input {
+    width: 9.4rem;
+  }
+  .calculator-box .calculator-data .select-tip-box .percent-btns .tip-percent-input::-moz-placeholder {
+    font-size: 1.04rem;
+  }
+  .calculator-box .calculator-data .select-tip-box .percent-btns .tip-percent-input::placeholder {
+    font-size: 1.04rem;
+  }
+}/*# sourceMappingURL=main.css.map */
