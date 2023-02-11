@@ -6,6 +6,7 @@ let $tipResult;
 let $tipTotal;
 let $errorText;
 let $resetBtn;
+let $peopleIcon;
 
 
 const main = () => {
@@ -23,6 +24,7 @@ const prepareDOMElements = () => {
     $tipTotal = document.querySelector('.total-result');
     $errorText = document.querySelector('.error-text');
     $resetBtn = document.querySelector('.reset-btn');
+    $peopleIcon = document.querySelector('.people-input-icon');
 }
 
 const prepareDOMEvents = () => {
@@ -48,8 +50,9 @@ const countTip = (e) =>{
         
         $tipResult.textContent = tipPerPerson.toFixed(2);
         $tipTotal.textContent = total.toFixed(2);
-        
+
         checkInput();
+
     } else{
         return;
     }  
@@ -60,8 +63,19 @@ const checkInput = () => {
         $errorText.textContent = "Can't be 0";
         $tipResult.textContent = '0.00';
         $tipTotal.textContent = '0.00';
+    } else if ($tipResult.textContent == 'NaN') {
+        $tipResult.textContent = '0.00';
+        $tipTotal.textContent = '0.00';
     } else {
         $errorText.textContent = '';
+    }
+
+    if($errorText.textContent === "Can't be 0" && window.innerWidth < 368 && window.innerWidth < 768){
+        $peopleIcon.style.marginTop = 4.2 + 'rem';
+    } else if ($errorText.textContent === "Can't be 0" && window.innerWidth > 578 && window.innerWidth < 768) {
+        $peopleIcon.style.marginTop = 4.2 + 'rem';
+    } else if ($errorText.textContent === '' && window.innerWidth < 368 && window.innerWidth < 768) {
+        $peopleIcon.style.marginTop = 1.8 + 'rem';
     }
 }
 
@@ -72,6 +86,7 @@ const resetCalculator = () => {
     $numberOfPeople.value = '';
     $errorText.textContent = '';
     $tipPercentCustom.value = '';
+    $peopleIcon.style.marginTop = 1.8 + 'rem';
 }
 
 const checkTips = (e) => {
